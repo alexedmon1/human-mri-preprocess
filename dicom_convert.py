@@ -3,13 +3,13 @@
 """
 Created on Tue Jun  8 12:31:47 2021
 
-@author: edm9fd
+@author: AE
 """
 
 from glob import glob
 import subprocess
 
-subject_folders = glob('/mnt/exodus/IRC805/IRC805-*/')
+subject_folders = glob('')
 
 def subject_number(f):
     f1 = f.split('/')
@@ -25,11 +25,11 @@ def heudiconv(sub):
     -o 
 
     """
-    dicom_dir = ['-d', '/mnt/exodus/IRC805/IRC805-{subject}/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/*/*.dcm']
+    dicom_dir = ['-d', '/*/*.dcm']
     subject = ['-s', sub]
-    heuristic = ['-f', '/mnt/elysium/IRC805/code/IRC805_heuristic.py']
+    heuristic = ['-f', 'heuristic.py']
     converter = ['-c', 'dcm2niix']
-    out_dir = ['-o', '/mnt/elysium/IRC805/heudiconv']
+    out_dir = ['-o', 'heudiconv']
     other = ['--overwrite']
     command_list = ['heudiconv'] + dicom_dir + subject + heuristic + converter + out_dir + other
     subprocess.run(command_list, stderr=subprocess.PIPE, stdout=subprocess.PIPE, stdin=subprocess.PIPE)
