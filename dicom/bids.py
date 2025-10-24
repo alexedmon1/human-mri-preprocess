@@ -25,13 +25,14 @@ class support:
     def dicom_info(dicom):
         dcm = pydicom.dcmread(dicom)
         desc = dcm.SeriesDescription
+        #subj = dcm. #Move subject no. to here. 
         return desc
     
     
     def set_modality(descriptor):
         if any(descriptor in sub for sub in ['T2W CS5 OF1 TR2500', 'T2W Sagittal Reformat', '3D_T1_TFE_SAG_CS3']):
             return 'anat'
-        if any(descriptor in sub for sub in ['fMRI_CORRECTION_MB3_ME3_SENSE3_3mm_TR1104_TE15_DTE20', 'RESTING_ME3_MB3_SENSE3', 'fMRI']):
+        if any(descriptor in sub for sub in ['fMRI_CORRECTION_MB3_ME3_SENSE3_3mm_TR1104_TE15_DTE20', 'RESTING ME3 MB3 SENSE3', 'fMRI']):
             return 'rest'
         if any(descriptor in sub for sub in ['SE_EPI Posterior', 'DelRec - DTI_1shell_b3000_MB4', 'DelRec - DTI_2shell_b1000_b2000_MB4']):
             return 'dwi'
