@@ -30,11 +30,11 @@ class support:
     
     
     def set_modality(descriptor):
-        if any(descriptor in sub for sub in ['T2W CS5 OF1 TR2500', 'T2W Sagittal Reformat', '3D_T1_TFE_SAG_CS3']):
+        if any(descriptor in sub for sub in ['T2W CS5 OF1 TR2500', 'T2W Sagittal Reformat', '3D_T1_TFE_SAG_CS3', 'AX T1 MPR', 'COR T1 MPR']):
             return 'anat'
-        if any(descriptor in sub for sub in ['fMRI_CORRECTION_MB3_ME3_SENSE3_3mm_TR1104_TE15_DTE20', 'RESTING ME3 MB3 SENSE3', 'fMRI']):
+        if any(descriptor in sub for sub in ['fMRI_CORRECTION_MB3_ME3_SENSE3_3mm_TR1104_TE15_DTE20', 'RESTING ME3 MB3 SENSE3', 'RESTING_STATE']):
             return 'rest'
-        if any(descriptor in sub for sub in ['SE_EPI Posterior', 'DelRec - DTI_1shell_b3000_MB4', 'DelRec - DTI_2shell_b1000_b2000_MB4']):
+        if any(descriptor in sub for sub in ['SE_EPI Posterior', 'DelRec - DTI_1shell_b3000_MB4', 'DelRec - DTI_2shell_b1000_b2000_MB4', 'dWIP DTI 32 2 37mm CLEAR', 'facWIP DTI 32 2 37mm CLEAR', 'DTI 32 2 37mm', 'isoWIP DTI 32 2 37m']):
             return 'dwi'
         if any(descriptor in sub for sub in ['PCA_PRE_INT', 'DelRec - pCASL1', 'DelRec - pCASL1','WIP SOURCE - DelRec - pCASL1']):
             return 'asl'
