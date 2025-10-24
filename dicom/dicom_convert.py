@@ -8,13 +8,13 @@ Created on Tue Jun  8 12:31:47 2021
 
 from glob import glob
 import subprocess
+import sys
 
-subject_folders = glob('')
+subject_folders = glob('/mnt/bytopia/IRC805/dicom/*')#glob(sys.argv[1]+'*')
 
 def subject_number(f):
     f1 = f.split('/')
-    f2 = f1[-2].split('-')
-    return f2[-1]
+    return f1[-1]
 
 def heudiconv(sub):
     """
@@ -25,17 +25,17 @@ def heudiconv(sub):
     -o 
 
     """
-    dicom_dir = ['-d', '/*/*.dcm']
+    subject = subject_number(sub)
+    dicom_dir = ['-d', i+'/*/*']
     subject = ['-s', sub]
     heuristic = ['-f', 'heuristic.py']
     converter = ['-c', 'dcm2niix']
-    out_dir = ['-o', 'heudiconv']
+    out_dir = ['-o', 'bids']
     other = ['--overwrite']
-    command_list = ['heudiconv'] + dicom_dir + subject + heuristic + converter + out_dir + other
+    command_list = ['uvx'] + ['heudiconv'] + dicom_dir + subject + heuristic + converter + out_dir + other
     subprocess.run(command_list, stderr=subprocess.PIPE, stdout=subprocess.PIPE, stdin=subprocess.PIPE)
 
 for i in subject_folders:
-    subject = subject_number(i)
-    print('Processing '+str(subject)+ '. . .')
-    heudiconv(subject)
+    print('Processing '+i+ '. . .')
+    heudiconv(i)
 

@@ -163,6 +163,20 @@ wheels = [
 ]
 
 [[package]]
+name = "dcmstack"
+version = "0.9.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "nibabel" },
+    { name = "pydicom" },
+    { name = "pylibjpeg-libjpeg" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/67/b8/8828378449fa8d80b47311384c845375fbd3988d15d2573b7d7a66bc8f09/dcmstack-0.9.0.tar.gz", hash = "sha256:9e131226fb00cdc72f5c2ad61f82b37020d3f97f272d1becb880168bd4504860", size = 51275, upload-time = "2022-09-24T05:25:21.539Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bb/62/04cf229c7068327e7026fc9654f7749cd9274e821caa2ac13e4fa0faa2fb/dcmstack-0.9.0-py3-none-any.whl", hash = "sha256:e16eca79ea1d4be8d5397d50a4189fb4ac2ef8b193447080e217df92c495ebd9", size = 42049, upload-time = "2022-09-24T05:25:19.626Z" },
+]
+
+[[package]]
 name = "debugpy"
 version = "1.8.17"
 source = { registry = "https://pypi.org/simple" }
@@ -220,24 +234,45 @@ wheels = [
 ]
 
 [[package]]
+name = "heudiconv"
+version = "1.3.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dcmstack" },
+    { name = "etelemetry" },
+    { name = "filelock" },
+    { name = "nibabel" },
+    { name = "nipype" },
+    { name = "pydicom" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/c3/bb/af815c23375825c5eb0567c9393b2b34adf4ec33c81ab28022d352c0fe2e/heudiconv-1.3.4.tar.gz", hash = "sha256:cd3ff1cbd7f41819a11899b819dd1910a35289f0418f1d119933aaabaa8de1aa", size = 9165849, upload-time = "2025-09-24T17:55:37.039Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/63/43/4ea079fe44ec44871b2212f635f32c1cc99f6457e7d1e092cd1ff7a01dd8/heudiconv-1.3.4-py3-none-any.whl", hash = "sha256:226968f322d4e758bb47b70c3d57239ec62c110c4715a746e8c13e52544f3844", size = 9190666, upload-time = "2025-09-24T17:55:34.486Z" },
+]
+
+[[package]]
 name = "human-mri-preprocess"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "heudiconv" },
     { name = "nibabel" },
     { name = "nipype" },
     { name = "numpy" },
     { name = "pandas" },
+    { name = "pydicom" },
     { name = "scipy" },
     { name = "spyder-kernels" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "heudiconv", specifier = ">=1.3.4" },
     { name = "nibabel", specifier = ">=5.3.2" },
     { name = "nipype", specifier = ">=1.10.0" },
     { name = "numpy", specifier = ">=2.3.3" },
     { name = "pandas", specifier = ">=2.3.3" },
+    { name = "pydicom", specifier = ">=3.0.1" },
     { name = "scipy", specifier = ">=1.16.2" },
     { name = "spyder-kernels", specifier = ">=3.1.0" },
 ]
@@ -640,6 +675,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pydicom"
+version = "3.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/d7/6f/55ea163b344c91df2e03c007bebf94781f0817656e2c037d7c5bf86c3bfc/pydicom-3.0.1.tar.gz", hash = "sha256:7b8be344b5b62493c9452ba6f5a299f78f8a6ab79786c729b0613698209603ec", size = 2884731, upload-time = "2024-09-22T02:02:43.202Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/27/a6/98651e752a49f341aa99aa3f6c8ba361728dfc064242884355419df63669/pydicom-3.0.1-py3-none-any.whl", hash = "sha256:db32f78b2641bd7972096b8289111ddab01fb221610de8d7afa835eb938adb41", size = 2376126, upload-time = "2024-09-22T02:02:41.616Z" },
+]
+
+[[package]]
 name = "pydot"
 version = "4.0.1"
 source = { registry = "https://pypi.org/simple" }
@@ -658,6 +702,23 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/b0/77/a5b8c569bf593b0140bde72ea885a803b82086995367bf2037de0159d924/pygments-2.19.2.tar.gz", hash = "sha256:636cb2477cec7f8952536970bc533bc43743542f70392ae026374600add5b887", size = 4968631, upload-time = "2025-06-21T13:39:12.283Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c7/21/705964c7812476f378728bdf590ca4b771ec72385c533964653c68e86bdc/pygments-2.19.2-py3-none-any.whl", hash = "sha256:86540386c03d588bb81d44bc3928634ff26449851e99741617ecb9037ee5ec0b", size = 1225217, upload-time = "2025-06-21T13:39:07.939Z" },
+]
+
+[[package]]
+name = "pylibjpeg-libjpeg"
+version = "2.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/6a/39/d44c4124d8e97a3d5b5e87da5d5f096e010eb83670351bc0e9c77c0febd5/pylibjpeg_libjpeg-2.3.0.tar.gz", hash = "sha256:ffb736acee1dfd446f387d45dfec83a144c7971e5cde290d9aafefa5dee99dd0", size = 671494, upload-time = "2024-10-27T02:36:21.316Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/40/42/78fe92094c6e850fd465375cd86efa708153ce60748a89f499b4c26b282c/pylibjpeg_libjpeg-2.3.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:df5db32f1ddfb47c30de9613ace38a0e685f75bf30bd42594c8d54057e5fb8a9", size = 676021, upload-time = "2024-10-27T02:35:59.35Z" },
+    { url = "https://files.pythonhosted.org/packages/f7/dc/eb4e1882cc745c5b3f8c8cca6c3a0317b2b0ec22e7e483219f4e1e3a6704/pylibjpeg_libjpeg-2.3.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:87f334baddb5f7606cb999e3c96e900d25a320b35bf3c0f5061fb2679e876841", size = 600982, upload-time = "2024-10-27T02:36:01.572Z" },
+    { url = "https://files.pythonhosted.org/packages/ba/39/cbe60564dc0033ff45cd1a3756d58817bc3bf4100b5ce0c8f4f9bb3b33f8/pylibjpeg_libjpeg-2.3.0-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:5acf60b2d531bafccc5d8edabd59fc4c542d835ef8772392d6690a994ca9aef0", size = 3281365, upload-time = "2024-10-27T02:36:03.736Z" },
+    { url = "https://files.pythonhosted.org/packages/45/55/8873e0d29ce163acecb035b642c7b5bc04972489248f0ad60ebe47dd90e5/pylibjpeg_libjpeg-2.3.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:7744848b239e969162ad65dd2bc7470e14d9eb324ee26d519bd8012fb8e237b8", size = 3401123, upload-time = "2024-10-27T02:36:05.712Z" },
+    { url = "https://files.pythonhosted.org/packages/a5/01/6eed5b15ccdb21e6898815d482cda70987e34ff987f30f5bc5e5af16f5eb/pylibjpeg_libjpeg-2.3.0-cp313-cp313-win32.whl", hash = "sha256:ec974e854f220714d70e51ee02c832bbdb04bba41007fb962b209622560157fe", size = 729881, upload-time = "2024-10-27T02:36:07.849Z" },
+    { url = "https://files.pythonhosted.org/packages/f4/b4/8606414416b01233f30f99d69ed1840d8ffa3e04ffc2b73a026fbada87a2/pylibjpeg_libjpeg-2.3.0-cp313-cp313-win_amd64.whl", hash = "sha256:0b8469237b9b0600cff7af4cf570689667b0e542e10ed9d5a2defe6355a84e60", size = 743805, upload-time = "2024-10-27T02:36:09.259Z" },
 ]
 
 [[package]]
